@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Kripa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      background: url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?fit=crop&w=1350&q=80') center/cover no-repeat;
+      backdrop-filter: blur(6px);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      padding: 0 20px;
+    }
+    #buttons {
+      margin-top: 20px;
+    }
+    button {
+      font-size: 1.5rem;
+      margin: 10px;
+      padding: 12px 35px;
+      border: none;
+      border-radius: 50px;
+      background: white;
+      color: hotpink;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: hotpink;
+      color: white;
+    }
+    #popup, #message {
+      display: none;
+      font-size: 1.4rem;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      color: hotpink;
+      padding: 15px 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+    .flower {
+      position: absolute;
+      font-size: 2rem;
+      animation: fall 6s linear infinite;
+    }
+    @keyframes fall {
+      0% {transform: translateY(0) rotate(0deg);}
+      100% {transform: translateY(100vh) rotate(360deg);}
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kripa I Love❤ You <br>
+  &<br>
+   I Like You! Please Accept My Love❤!</h1>
+   <div class="emoji-container">
+    <img src="heartemoji.png" alt="Kripa" style="width: 200px; height: 200px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+    <img src="profile11.jpg" alt="Kripa" style="width: 200px; height: 200px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+    <img src="pawan.gif" alt="Kripa" style="width: 200px; height: 200px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+   </div>
+
+<div id="buttons">
+  <button id="yesBtn">I Love❤ You To </button>
+  <button id="noBtn">No</button>
+</div>
+
+<div id="popup"></div>
+<div id="message">
+  Sani 🎀 Thanks For Accepting My Love❤!<br>
+  I Love ❣ You Cutie🎀 Ma Timi Sanga Dherai 💘 Maya Garchhu ❤<br>
+  I Love ❣ You Forever 😘 My Baby 😍 My Sweetheart🎀 Kripa!
+</div>
+
+<audio id="bgmusic" autoplay loop>
+  <source src="kripa.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn = document.getElementById('noBtn');
+const yesBtn = document.getElementById('yesBtn');
+const message = document.getElementById('message');
+const popup = document.getElementById('popup');
+
+noBtn.addEventListener('click', () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 100);
+  noBtn.style.position = 'absolute';
+  noBtn.style.left = x + 'px';
+  noBtn.style.top = y + 'px';
+
+  popup.innerText = "Please Sweety 🎀 Maan Jao Please!";
+  popup.style.display = 'block';
+});
+
+yesBtn.addEventListener('click', () => {
+  message.style.display = 'block';
+  popup.style.display = 'none';
+  createFallingFlowers();
+});
+
+function createFallingFlowers() {
+  for (let i = 0; i < 50; i++) {
+    const flower = document.createElement('div');
+    flower.className = 'flower';
+    flower.innerText = Math.random() > 0.5 ? '⚘' : '🌷';
+    flower.style.left = Math.random() * window.innerWidth + 'px';
+    flower.style.animationDuration = (3 + Math.random() * 3) + 's';
+    document.body.appendChild(flower);
+  }
+}
+
+// Fix autoplay for mobile
+document.addEventListener('click', function() {
+  const music = document.getElementById('bgmusic');
+  music.play().catch(()=>{});
+});
+</script>
+
+</body>
+</html>
