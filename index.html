@@ -234,24 +234,3 @@ document.addEventListener('touchmove',e=>{
 
 </body>
 </html>
-yesBtn.addEventListener('click',()=>{
-  message.style.display='block';
-  popup.style.display='none';
-  createFallingFlowers();
-  message.scrollIntoView({behavior:'smooth'});
-});
-
-function createFallingFlowers(){
-  for(let i=0;i<50;i++){
-    const flower=document.createElement('div');
-    flower.className='flower';
-    flower.innerText=Math.random()>0.5?'🌹':'💖';
-    flower.style.left=Math.random()*window.innerWidth+'px';
-    flower.style.animationDuration=(3+Math.random()*3)+'s';
-    document.body.appendChild(flower);
-    setTimeout(()=>flower.remove(),6000);
-  }
-}
-</script>
-</body>
-</html>
